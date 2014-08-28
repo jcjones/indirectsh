@@ -22,7 +22,7 @@
 #include <curlpp/Options.hpp>
 #include <json.h>
 
-#include "channel.hpp"
+#include "ichannel.hpp"
 #include "icommandprocessor.hpp"
 
 /** A simple command that queries for the external IP address and returns it. 

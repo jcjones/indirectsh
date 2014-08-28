@@ -4,10 +4,10 @@ CXXFLAGS=-std=c++11 -Wall -ggdb3 -O3 ${SYS_CXXFLAGS} -I/usr/include/curlpp
 
 LIBS=`pkg-config --libs ${PKG_DEPS}` -lcurlpp
 
-all: pnsh
+all: indirectshd
 
-pnsh: main.o channel.o event_loop.o shell.o pipe.o ip_location_cmd.o shell_cmd.o
+indirectshd: main.o pubnub_channel.o event_loop.o shell.o pipe.o ip_location_cmd.o shell_cmd.o
 	g++ -o $@ $^ $(LIBS)
 
 clean:
-	rm -f *.o pnsh
+	rm -f *.o indrectshd

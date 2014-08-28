@@ -18,7 +18,7 @@
 #define _ICOMMANDPROCESSOR
 
 #include <json.h>
-#include "channel.hpp"
+#include "ichannel.hpp"
 
 /** Interface defining a Class that processes commands arriving on the Channel 
  *  in JSON format. Commands must have a name that matches the JSON data's 

@@ -14,30 +14,25 @@
  * limitations under the License.
  */
 
-#include <string>
-#include <sstream>
-#include <iostream>
+#ifndef _CHANNEL_HPP
+#define _CHANNEL_HPP
 
-#include <unistd.h>
-#include <stdio.h>
 #include <vector>
+#include <string>
 
-#include <json.h>
+#include <pubnub.hpp>
+#include <pubnub-sync.hpp>
 
-#include "icommandprocessor.hpp"
-#include "ichannel.hpp"
-#include "shell.hpp"
-
-/** This Processor opens a shell and waits for commands. Sample command would be: 
-  * {"command":"shell", "in":"uptime\n"} */
-class ShellProcessor : public ICommandProcessor
+/** Interface defining a communication channel to/from clients. */
+class Channel
 {
     public:
-        ShellProcessor(Channel *);
-        void processCommand(Channel *, json_object *);
+	/** Obtain a message from a client; this method will block until a message arrives. */
+        virtual json_object *getMessage() = 0;
+	/** Send a message to a client; this method will block until the channel accepts the message. */
+        virtual void sendMessage(json_object *) = 0;
 
-        std::string commandName();
+        virtual ~Channel() {};
     private:
-        Shell shell_;
-
 };
+#endif                           // _CHANNEL_HPP

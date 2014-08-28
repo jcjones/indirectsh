@@ -26,7 +26,7 @@
 
 #include <json.h>
 
-#include "channel.hpp"
+#include "pubnub_channel.hpp"
 #include "event_loop.hpp"
 
 #include "ip_location_cmd.hpp"
@@ -50,7 +50,7 @@ class Me: public ICommandProcessor
 
 int main() {
     EventLoop loop;
-    Channel *channel = new Channel();
+    Channel *channel = new PubnubChannel();
 
     loop.setChannel(channel);
 

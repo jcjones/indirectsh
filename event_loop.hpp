@@ -29,7 +29,7 @@
 #include <pubnub.hpp>
 #include <pubnub-sync.hpp>
 
-#include "channel.hpp"
+#include "ichannel.hpp"
 #include "icommandprocessor.hpp"
 
 /** This is the shell loop processor; its' mainLoop() method runs until a shutdown is requested. */

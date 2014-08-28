@@ -25,7 +25,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-#include "channel.hpp"
+#include "ichannel.hpp"
 #include "pipe.hpp"
 
 /** This class encapsulates a shell, such as BASH or ZSH. You send it commands 

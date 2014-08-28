@@ -17,11 +17,10 @@
 #include <system_error>
 #include <iostream>
 
-#include "channel.hpp"
-
+#include "pubnub_channel.hpp"
 #include "pubnub_account.hpp"
 
-Channel::Channel() {
+PubnubChannel::PubnubChannel() {
     sync_ = pubnub_sync_init();
     pubnub_ = new PubNub(
         /* publish_key */ PUBLISH_KEY,
@@ -31,7 +30,7 @@ Channel::Channel() {
 }
 
 
-void Channel::sendMessage(json_object *msg) {
+void PubnubChannel::sendMessage(json_object *msg) {
     pubnub_->publish(CHANNEL, /* message */ *msg);
 
     PubNub_sync_reply publish_reply = pubnub_sync_last_reply(sync_);
@@ -42,7 +41,7 @@ void Channel::sendMessage(json_object *msg) {
 }
 
 
-json_object *Channel::getMessage() {
+json_object *PubnubChannel::getMessage() {
     pubnub_->subscribe(CHANNEL);
 
     PubNub_sync_reply subscribe_reply = pubnub_sync_last_reply(sync_);

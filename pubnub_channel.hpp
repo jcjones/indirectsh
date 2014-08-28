@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef _CHANNEL_HPP
-#define _CHANNEL_HPP
+#ifndef _PUBNUB_CHANNEL_HPP
+#define _PUBNUB_CHANNEL_HPP
 
 #include <vector>
 #include <string>
@@ -23,11 +23,13 @@
 #include <pubnub.hpp>
 #include <pubnub-sync.hpp>
 
+#include "ichannel.hpp"
+
 /** Interface defining a communication channel to/from clients. */
-class Channel
+class PubnubChannel : public Channel
 {
     public:
-        Channel();
+        PubnubChannel();
 	/** Obtain a message from a client; this method will block until a message arrives. */
         json_object *getMessage();
 	/** Send a message to a client; this method will block until the channel accepts the message. */
@@ -36,4 +38,4 @@ class Channel
         PubNub *pubnub_;
         pubnub_sync *sync_;
 };
-#endif                           // _CHANNEL_HPP
+#endif                           // _PUBNUB_CHANNEL_HPP
