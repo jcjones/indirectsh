@@ -1,3 +1,4 @@
 pubnub_account.hpp
 *.o
-pnsh
+*.json
+indirectshd
