@@ -1,0 +1,3 @@
+#define PUBLISH_KEY   "demo"
+#define SUBSCRIBE_KEY "demo"
+#define CHANNEL       "my_channel"
