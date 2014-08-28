@@ -9,6 +9,25 @@ The SAIFE module provides strong bidirectional authentication based on ECDSA wit
 ## PubNub Module
 The PubNub module provides no real security; anyone who knows your `publish_key` on PubNub can command your server.
 
+# Installation
+
+This program requires several dependencies:
+* libpubnub [github](https://github.com/pubnub/c#installation)
+* libjson
+* libcurlpp
+
+To install dependencies on debian, you can do:
+
+```shell
+sudo apt-get install libevent-dev libjson0-dev libcurl4-openssl-dev libssl-dev libcurlpp-dev
+
+# PubNub
+git clone https://github.com/pubnub/c.git libpubnub-c
+cd libpubnub-c
+make
+sudo make install
+```
+
 # License
 This software is licensed under terms of the Apache 2.0 license. It utilizes external libraries from SAIFE, Inc. and Pubnub.
 

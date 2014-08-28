@@ -19,9 +19,7 @@
 
 #include <vector>
 #include <string>
-
-#include <pubnub.hpp>
-#include <pubnub-sync.hpp>
+#include <json.h>
 
 /** Interface defining a communication channel to/from clients. */
 class Channel

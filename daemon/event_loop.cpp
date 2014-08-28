@@ -58,7 +58,7 @@ int EventLoop::mainLoop() {
     do {
         msg = this->channel_->getMessage();
         if (json_object_array_length(msg) == 0) {
-            std::cout << "pubnub subscribe ok, no news" << std::endl;
+            std::cout << "Empty list of new messages." << std::endl;
         }
         else {
             for (int i = 0; i < json_object_array_length(msg); i++) {

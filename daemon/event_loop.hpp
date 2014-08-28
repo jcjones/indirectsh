@@ -26,9 +26,6 @@
 
 #include <json.h>
 
-#include <pubnub.hpp>
-#include <pubnub-sync.hpp>
-
 #include "ichannel.hpp"
 #include "icommandprocessor.hpp"
 
