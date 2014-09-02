@@ -2,3 +2,4 @@ pubnub_account.hpp
 *.o
 *.json
 indirectshd
+ish

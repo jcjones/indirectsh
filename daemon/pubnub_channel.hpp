@@ -29,7 +29,7 @@
 class PubnubChannel : public Channel
 {
     public:
-        PubnubChannel();
+        PubnubChannel(std::string subkey, std::string pubkey, std::string channel);
 	/** Obtain a message from a client; this method will block until a message arrives. */
         json_object *getMessage();
 	/** Send a message to a client; this method will block until the channel accepts the message. */
@@ -37,5 +37,6 @@ class PubnubChannel : public Channel
     private:
         PubNub *pubnub_;
         pubnub_sync *sync_;
+        std::string channel_;
 };
 #endif                           // _PUBNUB_CHANNEL_HPP

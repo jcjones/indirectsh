@@ -26,6 +26,7 @@
 
 #include <json.h>
 
+#include "config.hpp"
 #include "pubnub_channel.hpp"
 #include "event_loop.hpp"
 
@@ -49,10 +50,19 @@ class Me: public ICommandProcessor
 };
 
 int main() {
-    EventLoop loop;
-    Channel *channel = new PubnubChannel();
+    Config config;
 
-    loop.setChannel(channel);
+    EventLoop loop;
+    Channel *channel = NULL;
+
+    {
+        std::string subkey  = config.getConfig("pubnub", "subscribe_key");
+        std::string pubkey  = config.getConfig("pubnub", "publish_key");
+        std::string chankey = config.getConfig("pubnub", "channel");
+
+        channel = new PubnubChannel(subkey, pubkey, chankey);
+        loop.setChannel(channel);
+    }
 
     loop.addProcessor(new Me());
     loop.addProcessor(new IpLocation());

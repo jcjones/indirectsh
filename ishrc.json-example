@@ -1,0 +1,7 @@
+{
+    "pubnub": {
+        "subscribe_key" : "demo",
+        "publish_key" : "demo",
+        "channel" : "my_channel"
+    }
+}

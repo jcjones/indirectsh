@@ -18,20 +18,20 @@
 #include <iostream>
 
 #include "pubnub_channel.hpp"
-#include "pubnub_account.hpp"
 
-PubnubChannel::PubnubChannel() {
+PubnubChannel::PubnubChannel(std::string subkey, std::string pubkey, std::string channel) {
+    channel_ = channel;
     sync_ = pubnub_sync_init();
     pubnub_ = new PubNub(
-        /* publish_key */ PUBLISH_KEY,
-        /* subscribe_key */ SUBSCRIBE_KEY,
+        /* publish_key */ pubkey,
+        /* subscribe_key */ subkey,
         /* pubnub_callbacks */ &pubnub_sync_callbacks,
         /* pubnub_callbacks data */ sync_);
 }
 
 
 void PubnubChannel::sendMessage(json_object *msg) {
-    pubnub_->publish(CHANNEL, /* message */ *msg);
+    pubnub_->publish(channel_, /* message */ *msg);
 
     PubNub_sync_reply publish_reply = pubnub_sync_last_reply(sync_);
     if (publish_reply.result() != PNR_OK)
@@ -42,7 +42,7 @@ void PubnubChannel::sendMessage(json_object *msg) {
 
 
 json_object *PubnubChannel::getMessage() {
-    pubnub_->subscribe(CHANNEL);
+    pubnub_->subscribe(channel_);
 
     PubNub_sync_reply subscribe_reply = pubnub_sync_last_reply(sync_);
     if (subscribe_reply.result() != PNR_OK)

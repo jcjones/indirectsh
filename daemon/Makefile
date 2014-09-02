@@ -6,7 +6,7 @@ LIBS=`pkg-config --libs ${PKG_DEPS}` -lcurlpp
 
 all: ../indirectshd
 
-../indirectshd: main.o pubnub_channel.o event_loop.o shell.o pipe.o ip_location_cmd.o shell_cmd.o
+../indirectshd: main.o pubnub_channel.o config.o event_loop.o shell.o pipe.o ip_location_cmd.o shell_cmd.o
 	g++ -o $@ $^ $(LIBS)
 
 clean:
